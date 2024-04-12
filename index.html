@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название вашего канала</title>
+    <style>
+        /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styles for the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Styles for the main content */
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Styles for the video section */
+        .video {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Название вашего канала</h1>
+        <p>Описание вашего канала</p>
+    </header>
+
+    <div class="container" id="videoContainer">
+        <!-- Video content will be loaded dynamically here -->
+    </div>
+
+    <script>
+        // JavaScript for loading video content dynamically
+        window.onload = function() {
+            // Dummy video data (replace with actual data)
+            var videoData = [
+                {
+                    title: "Название вашего видео 1",
+                    src: "https://www.youtube.com/embed/ВашКод1",
+                    description: "Описание вашего видео 1"
+                },
+                {
+                    title: "Название вашего видео 2",
+                    src: "https://www.youtube.com/embed/ВашКод2",
+                    description: "Описание вашего видео 2"
+                }
+            ];
+
+            // Function to create video elements
+            function createVideoElement(video) {
+                var videoSection = document.createElement("section");
+                videoSection.classList.add("video");
+
+                var title = document.createElement("h2");
+                title.textContent = video.title;
+
+                var iframe = document.createElement("iframe");
+                iframe.width = "560";
+                iframe.height = "315";
+                iframe.src = video.src;
+                iframe.frameborder = "0";
+                iframe.allowfullscreen = true;
+
+                var description = document.createElement("p");
+                description.textContent = video.description;
+
+                videoSection.appendChild(title);
+                videoSection.appendChild(iframe);
+                videoSection.appendChild(description);
+
+                return videoSection;
+            }
+
+            // Function to load video content into the page
+            function loadVideoContent() {
+                var videoContainer = document.getElementById("videoContainer");
+                videoData.forEach(function(video) {
+                    var videoElement = createVideoElement(video);
+                    videoContainer.appendChild(videoElement);
+                });
+            }
+
+            // Load video content when the page is ready
+            loadVideoContent();
+        };
+    </script>
+</body>
+</html>
